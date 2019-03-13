@@ -1,0 +1,62 @@
+<html>
+<head>
+<title>MS Lab 1</title>
+<script>
+function generate(){
+	var coinToss = [], winner;
+	var hamount = 0, tamount = 0, noOfHeads = 0, noOfTails = 0, amount;
+	for(var i=0; i<30; i++){
+		coinToss[i] = Math.round(Math.random());
+		if(coinToss[i]==1){
+			noOfHeads++; hamount++; tamount--;
+		}
+		else if(coinToss[i]==0){
+			noOfTails++; hamount--; tamount++;
+		}
+	}
+	if(noOfHeads>noOfTails){
+		winner = "Harry"; amount = hamount;
+	}
+	else if(noOfTails>noOfHeads){
+		winner = "Tom"; amount = tamount;
+	}
+	else{
+		winner = "Draw"; amount = 0;
+	}
+	var coinTable = document.getElementById("cointable");
+	var x = document.createElement("tr");
+	x.setAttribute("style", "border: 2px solid black;");
+	x.innerHTML = "<td>"+noOfHeads+"</td>"+ "<td>"+noOfTails+"</td>"+ "<td>"+winner+"</td>"+ "<td>$"+amount+"</td>";
+	coinTable.appendChild(x);
+}
+</script>
+<style type="text/css">
+	#headings{
+		list-style: none;
+		padding: 10px 0px;
+		border-top: 2px solid black; border-bottom: 2px solid black; border-right: 2px solid black;
+		display: inline-block;
+		margin-left: 2px;
+	}
+	#headings li{
+		display: inline;
+		padding: 10px;
+		border-left: 2px solid black;
+	}
+	td{
+		border: 2px solid black;
+		padding: 10px 20px;
+	}
+</style>
+</head>
+<body>
+	<ul id="headings">
+		<li>Heads</li>
+		<li>Tails</li>
+		<li>Winner</li>
+		<li>Amount</li>
+	</ul>
+	<table id="cointable"></table>
+	<br><button onclick="generate()" style="padding: 10px 15px; color: white; background-color: #344c4c; border: none">Generate</button>
+</body>
+</html>
